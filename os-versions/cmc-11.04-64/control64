@@ -1,0 +1,13 @@
+Source: cmc
+Section: accessories
+Priority: optional
+Maintainer: lithid <long.jeremie@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Homepage: http://forum.xda-developers.com/showthread.php?t=1415661
+
+Package: cmc
+Architecture: amd64
+Depends: python, git-core, gnupg, flex, bison, gperf, libsdl1.2-dev, libesd0-dev, libwxgtk2.6-dev, squashfs-tools, build-essential, zip, curl, libncurses5-dev, zlib1g-dev, openjdk-6-jdk, pngcrush, schedtool, g++-multilib, lib32z1-dev, lib32ncurses5-dev, lib32readline-gplv2-dev, gcc-4.3-multilib, g++-4.3-multilib
+Description: Cyanogenmod Compiler
+ Build cyanogenmod for offically supported devices

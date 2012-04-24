@@ -1,0 +1,3 @@
+#!/bin/bash
+# Wrapper for cmc
+/usr/share/cmc/prog/cmcompiler.py
