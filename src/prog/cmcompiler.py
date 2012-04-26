@@ -13,7 +13,6 @@ import gtk
 import pynotify
 import commands
 from glob import glob
-from xml.dom.minidom import parseString
 import ConfigParser
 
 # Path variables
@@ -249,7 +248,7 @@ class cmcStartClass():
 				icon = "%s/a-default.png" % (cmcThemeSmall)
 				sendNoti("Cmc theme", "Default theme has been set", icon)
 			else:
-				icon = "%s/%s" % (data, cmcThemeSmall)
+				icon = "%s/%s" % (cmcThemeSmall, data)
 				sendNoti("Cmc theme", "Theme has been set", icon)
 			parser("theme", data)
 
