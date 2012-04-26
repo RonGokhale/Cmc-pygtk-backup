@@ -2,4 +2,7 @@ cmc (0.1) unstable; urgency=low
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
 
+cmc (0.2) unstable; urgency=low
  -- lithid <long.jeremie@gmail.com>  Sun, 08 Apr 2012 00:13:27 -0400
+  * Fixed issue where paths were not working for compile script
+  * Fixed path issues when using custom repo path

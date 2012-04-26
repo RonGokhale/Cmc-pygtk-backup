@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-VERSION := cmc-0.1
+VERSION := cmc-0.2
 EMAIL := long.jeremie@gmail.com
 VER_DIR := os-versions
 BUILD := build
