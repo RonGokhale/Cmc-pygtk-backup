@@ -819,7 +819,7 @@ def extractFiles(parg, marg, darg):
 	else:
 		return False
 
-def sendNoti(title, summary, icon, time):
+def sendNoti(title, summary, icon):
 	pynotify.init("Theme")
 	n = pynotify.Notification(title, summary, icon)
 	n.show()
