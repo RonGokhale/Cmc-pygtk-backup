@@ -20,11 +20,12 @@ import ConfigParser
 u_home = os.environ['HOME']
 gitconfig = "%s/.gitconfig" % (u_home)
 configdir = "%s/.cmc/" % (u_home)
-cmcconfig = "%s/.cmc/cmc.cfg" % (u_home)
-build_script = "/usr/share/cmc/build-it.sh"
+cmcconfig = "%s/.cmc/cmc.cfg" % (u_
+home)
+build_script = "/usr/share/cmc/prog/scripts/build-it.sh"
 askConfirm = "%s/.cmc/ask.confim" % (u_home)
 repo_config = "%s/.cmc/repo_list" % (u_home)
-default_repo_path = "%s/.cmc/build/" % (u_home)
+default_repo_path = "%s/.cmc/build" % (u_home)
 cmcMainImage = "/usr/share/cmc/images/cmc-main.png"
 cmcIcon = "/usr/share/cmc/images/cmc-icon.png"
 cmcTheme = "/usr/share/cmc/images/theme/"
@@ -363,7 +364,7 @@ class cmcStartClass():
 		if chk_repo == 1:
 			cmd1 = "repo init -u %s -b %s" % (cmGit, repo_branch)
 			cmd2 = "repo sync -j1"
-			d = "%s.repo" % (repo_path)
+			d = "%s/.repo" % (repo_path)
 			if not os.path.exists(d):
 				os.system(cmd1)
 			os.system(cmd2)
@@ -375,18 +376,18 @@ class cmcStartClass():
 			build_device = read_parser("device")
 			build_manu = getManu(build_device)
 
-			d = "%s.repo" % (repo_path)
+			d = "%s/.repo" % (repo_path)
 			if not os.path.exists(d):
 				CHECKS+=1
 				custom_dialog(gtk.MESSAGE_WARNING, "Errors preventing build", "Need to sync repo before moving forward.")
 
 			if CHECKS == 0:
-				d = "%sdevice/%s/%s" % (repo_path, build_manu, build_device)
+				d = "%s/device/%s/%s" % (repo_path, build_manu, build_device)
 				if not os.path.exists(d):
 					custom_dialog(gtk.MESSAGE_WARNING, "Errors preventing build", "Could not change directories for you device. Does it exist?")
 
 				if CHECKS == 0:
-					d = "%svendor/%s/%s/proprietary" % (repo_path, build_manu, build_device)
+					d = "%s/vendor/%s/%s/proprietary" % (repo_path, build_manu, build_device)
 					if not os.path.exists(d):
 						c = checkAdb()
 						if c == False:
@@ -412,7 +413,7 @@ class cmcStartClass():
 							if os.path.exists(d):
 								custom_dialog(gtk.MESSAGE_ERROR, "Build failed", "Please run the build again, or run cmc via terminal to catch exact errors.")
 							else:
-								t = "%sout/target/product/%s" % (repo_path, build_device)
+								t = "%s/out/target/product/%s" % (repo_path, build_device)
 								rom = glob('%s/*signed.zip' %t)
 								q = question_dialog("Build complete", "Your rom is located:\n\n%s\n\nWould you like to go there now?" % (t))
 								if q == True:
@@ -424,27 +425,27 @@ class cmcStartClass():
 			build_device = read_parser("device")
 			build_manu = getManu(build_device)
 
-			d = "%s.repo" % (repo_path)
+			d = "%s/.repo" % (repo_path)
 			if not os.path.exists(d):
 				CHECKS+=1
 				custom_dialog(gtk.MESSAGE_ERROR, "Errors preventing build", "Need to sync repo before moving forward.")
 
 			if CHECKS == 0:
-				d = "%sdevice/%s/%s" % (repo_path, build_manu, build_device)
+				d = "%s/device/%s/%s" % (repo_path, build_manu, build_device)
 				if not os.path.exists(d):
 					os.chdir(repo_path)
 					cmd = "python build/tools/roomservice.py cm_" + build_device
 					os.system(cmd)
 					time.sleep(2)
 					build_manu = getManu(build_device)
-					nd = "%sdevice/%s/%s" % (repo_path, build_manu, build_device)
+					nd = "%s/device/%s/%s" % (repo_path, build_manu, build_device)
 					print nd
 					if not os.path.exists(nd):
 						CHECKS+=1
 						custom_dialog(gtk.MESSAGE_ERROR, "Errors preventing build", "Could not change directories for you device. Does it exist?")
 
 				if CHECKS == 0:
-					d = "%svendor/%s/%s/proprietary" % (repo_path, build_manu, build_device)
+					d = "%s/vendor/%s/%s/proprietary" % (repo_path, build_manu, build_device)
 					if not os.path.exists(d):
 						c = checkAdb()
 						if c == False:
@@ -470,7 +471,7 @@ class cmcStartClass():
 							if os.path.exists(d):
 								custom_dialog(gtk.MESSAGE_ERROR, "Build failed", "Please run the build again, or run cmc via terminal to catch exact errors.")
 							else:
-								t = "%sout/target/product/%s" % (repo_path, build_device)
+								t = "%s/out/target/product/%s" % (repo_path, build_device)
 								rom = glob('%s/*signed.zip' %t)
 								q = question_dialog("Build complete", "Your rom is located:\n\n%s\n\nWould you like to go there now?" % (t))
 								if q == True:
@@ -801,15 +802,15 @@ def checkAdb():
 
 def extractFiles(parg, marg, darg):
 	os.chdir(repo_path)
-	d = "%sdevice/%s/%s" % (parg, marg, darg)
+	d = "%s/device/%s/%s" % (parg, marg, darg)
 	if os.path.exists(d):
 		os.chdir(d)
 	if os.path.exists("extract-files.sh"):
-		d = "%svendor/%s/%s/proprietary" % (parg, marg, darg)
+		d = "%s/vendor/%s/%s/proprietary" % (parg, marg, darg)
 		if not os.path.exists(d):
 			cmd = "sh extract-files.sh"
 			os.system(cmd)
-			d = "%svendor/%s/%s/proprietary" % (parg, marg, darg)
+			d = "%s/vendor/%s/%s/proprietary" % (parg, marg, darg)
 			if os.path.exists(d):
 				return True
 			else:
