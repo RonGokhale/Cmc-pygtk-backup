@@ -20,8 +20,7 @@ import ConfigParser
 u_home = os.environ['HOME']
 gitconfig = "%s/.gitconfig" % (u_home)
 configdir = "%s/.cmc/" % (u_home)
-cmcconfig = "%s/.cmc/cmc.cfg" % (u_
-home)
+cmcconfig = "%s/.cmc/cmc.cfg" % (u_home)
 build_script = "/usr/share/cmc/prog/scripts/build-it.sh"
 askConfirm = "%s/.cmc/ask.confim" % (u_home)
 repo_config = "%s/.cmc/repo_list" % (u_home)
