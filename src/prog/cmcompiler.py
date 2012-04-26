@@ -28,7 +28,7 @@ default_repo_path = "%s/.cmc/build" % (u_home)
 cmcMainImage = "/usr/share/cmc/images/cmc-main.png"
 cmcIcon = "/usr/share/cmc/images/cmc-icon.png"
 cmcTheme = "/usr/share/cmc/images/theme/"
-cmcThemeSmall = "/usr/share/cmc/images/theme/small/"
+cmcThemeSmall = "/usr/share/cmc/images/theme/small"
 tmpManifest = "/tmp/manifest"
 default_branch = "ics"
 
@@ -246,10 +246,10 @@ class cmcStartClass():
 		def ThemeClicked(widget, event, data):
 			if data == "a-default.png":
 				data = "Default"
-				icon = "/home/lithid/Documents/cmc/src/images/theme/small/a-default.png"
+				icon = "%s/a-default.png" % (cmcThemeSmall)
 				sendNoti("Cmc theme", "Default theme has been set", icon)
 			else:
-				icon = "/home/lithid/Documents/cmc/src/images/theme/small/%s" % data
+				icon = "%s/%s" % (data, cmcThemeSmall)
 				sendNoti("Cmc theme", "Theme has been set", icon)
 			parser("theme", data)
 
@@ -333,7 +333,7 @@ class cmcStartClass():
 			tooltips = gtk.Tooltips()
 			event = gtk.EventBox()
 			image = gtk.Image()
-			path = "%s%s" % (cmcThemeSmall, x)
+			path = "%s/%s" % (cmcThemeSmall, x)
 			image.set_from_file(path)
 			event.connect("button_press_event", ThemeClicked, x)
 			tooltips.set_tip(event, x)
