@@ -9,3 +9,19 @@ Terminal=false
 Icon=/usr/share/cmc/images/cmc-icon.png
 Type=Application
 Categories=GTK;Development;
+
+X-Ayatana-Desktop-Shortcuts=Compile;Sync;Setup
+[Compile Shortcut Group]
+Name=Compile
+Exec=nautilus
+TargetEnvironment=Unity
+
+[Sync Shortcut Group]
+Name=Sync
+Exec=nautilus
+TargetEnvironment=Unity
+
+[Setup Shortcut Group]
+Name=Setup
+Exec=nautilus
+TargetEnvironment=Unity
