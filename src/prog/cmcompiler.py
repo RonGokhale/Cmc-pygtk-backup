@@ -64,6 +64,7 @@ class cmcStartClass():
 
 			dialog = gtk.Dialog("Choose branch", None, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
 			dialog.set_size_request(260, 200)
+			dialog.set_resizable(False)
 
 			scroll = gtk.ScrolledWindow()
 			scroll.set_border_width(10)
@@ -117,6 +118,7 @@ class cmcStartClass():
 
 			dialog = gtk.Dialog("Cmc configuration", None, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
 			dialog.set_size_request(500, 400)
+			dialog.set_resizable(False)
 
 			sw = gtk.ScrolledWindow()
 			sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
@@ -146,6 +148,7 @@ class cmcStartClass():
 
 			dialog = gtk.Dialog("Cmc git configuration", None, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
 			dialog.set_size_request(500, 400)
+			dialog.set_resizable(False)
 
 			sw = gtk.ScrolledWindow()
 			sw.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
@@ -198,6 +201,7 @@ class cmcStartClass():
 
 				dialog = gtk.Dialog("Choose device", None, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, (gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT, gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
 				dialog.set_size_request(260, 400)
+				dialog.set_resizable(False)
 
 				scroll = gtk.ScrolledWindow()
 				scroll.set_border_width(10)
@@ -532,11 +536,10 @@ class cmcStartClass():
 		window = gtk.Window(gtk.WINDOW_TOPLEVEL)
 		window.set_title("CMC")
 		window.set_icon(placeIcon)
-		window.set_size_request(260, 405)
 		window.set_position(gtk.WIN_POS_CENTER)
 		window.set_resizable(False)
 
-		vbox = gtk.VBox(False, 5)
+		vbox = gtk.VBox(False, 0)
 		hbox = gtk.HBox(True, 3)
 		h1box = gtk.HBox(True, 3)
 
@@ -566,7 +569,7 @@ class cmcStartClass():
 		help_menu.set_submenu(menu_bar_help)
 
 		menu_bar = gtk.MenuBar()
-		vbox.pack_start(menu_bar, False, False, 2)
+		vbox.pack_start(menu_bar, False, False, 0)
 		menu_bar.show()
 
 		menu_bar.append(file_menu)
@@ -588,19 +591,19 @@ class cmcStartClass():
 		tooltips.set_tip(event, "Go to XDA thread!")
 		event.add(image)
 
-        	about1 = gtk.Button("Compile")
-		about1.connect("clicked", self.repo_build_go)
+        	compile_btn = gtk.Button("Compile")
+		compile_btn.connect("clicked", self.repo_build_go)
 
-        	about2 = gtk.Button("Sync")
-		about2.connect("clicked", self.repo_sync_go)
+        	sync_btn = gtk.Button("Sync")
+		sync_btn.connect("clicked", self.repo_sync_go)
 
 		vbox.add(event)
-		h1box.add(about1)
-		h1box.add(about2)
+		h1box.add(compile_btn)
+		h1box.add(sync_btn)
 
         	h1align = gtk.Alignment(.50, 0, .75, 0)
         	h1align.add(h1box)
-		vbox.pack_start(h1align, False, False, 3)
+		vbox.pack_start(h1align, False, False, 10)
 
 		author_lab = gtk.Label()
 		author_lab.set_markup("<small><small>Built by <b><i>lithid</i></b> open and free!</small></small>")
