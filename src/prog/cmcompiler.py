@@ -529,13 +529,45 @@ class cmcStartClass():
 		window = gtk.Window(gtk.WINDOW_TOPLEVEL)
 		window.set_title("CMC")
 		window.set_icon(placeIcon)
-		window.set_size_request(260, 454)
+		window.set_size_request(260, 405)
 		window.set_position(gtk.WIN_POS_CENTER)
 		window.set_resizable(False)
 
 		vbox = gtk.VBox(False, 5)
 		hbox = gtk.HBox(True, 3)
 		h1box = gtk.HBox(True, 3)
+
+		menu_bar_file = gtk.Menu()
+
+		menu_setup = gtk.MenuItem("Setup")
+		menu_bar_file.append(menu_setup)
+		menu_setup.connect("activate", self.setup_dialog)
+		menu_setup.show()
+
+		menu_close = gtk.MenuItem("Close")
+		menu_bar_file.append(menu_close)
+		menu_close.connect("activate",  self.main_quit)
+		menu_close.show()
+
+		file_menu = gtk.MenuItem("File")
+		file_menu.set_submenu(menu_bar_file)
+
+		menu_bar_help = gtk.Menu()
+
+		menu_about = gtk.MenuItem("About")
+		menu_bar_help.append(menu_about)
+		menu_about.connect("activate", self.about_dialog)
+		menu_about.show()
+
+		help_menu = gtk.MenuItem("Help")
+		help_menu.set_submenu(menu_bar_help)
+
+		menu_bar = gtk.MenuBar()
+		vbox.pack_start(menu_bar, False, False, 2)
+		menu_bar.show()
+
+		menu_bar.append(file_menu)
+		menu_bar.append(help_menu)
 
      		valign = gtk.Alignment(0, 1, 0, 0)
         	vbox.pack_start(valign)
@@ -553,15 +585,6 @@ class cmcStartClass():
 		tooltips.set_tip(event, "Go to XDA thread!")
 		event.add(image)
 
-        	setup = gtk.Button("Setup")
-		setup.connect("clicked", self.setup_dialog)
-
-        	close = gtk.Button("Close")
-		close.connect("clicked", self.main_quit)
-
-        	about = gtk.Button("About")
-		about.connect("clicked", self.about_dialog)
-
         	about1 = gtk.Button("Compile")
 		about1.connect("clicked", self.repo_build_go)
 
@@ -575,14 +598,6 @@ class cmcStartClass():
         	h1align = gtk.Alignment(.50, 0, .75, 0)
         	h1align.add(h1box)
 		vbox.pack_start(h1align, False, False, 3)
-
-		hbox.add(setup)
-		hbox.add(about)
-        	hbox.add(close)
-
-        	halign = gtk.Alignment(.50, 0, .75, 0)
-        	halign.add(hbox)
-        	vbox.pack_start(halign, False, False, 3)
 
 		author_lab = gtk.Label()
 		author_lab.set_markup("<small><small>Built by <b><i>lithid</i></b> open and free!</small></small>")
