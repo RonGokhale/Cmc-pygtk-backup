@@ -506,6 +506,9 @@ class cmcStartClass():
  
 	# Main program
 	def main(self):
+
+		chk_config()
+
 		if not os.path.exists(askConfirm):
 			get_askConfirm()
 
