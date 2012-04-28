@@ -8,7 +8,7 @@ SRC_DIR := src
 OUT := out
 REQUIRED_DIRS := out
 
-all: cmc-10.04-32 cmc-10.04-64 cmc-10.10-32 cmc-10.10-64 cmc-11.04-32 cmc-11.04-64 cmc-11.10-32 cmc-11.10-64 cmc-12.04-32 cmc-12.04-64
+all: cmc-10.04-32 cmc-10.04-64 cmc-11.04-32 cmc-11.04-64 cmc-11.10-32 cmc-11.10-64 cmc-12.04-32 cmc-12.04-64
 32: cmc-10.04-32 cmc-11.04-32 cmc-11.10-32 cmc-12.04-32
 64: cmc-10.04-64 cmc-11.04-64 cmc-11.10-64 cmc-12.04-64
 
