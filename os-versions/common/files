@@ -1,11 +1,6 @@
-prog/build.py
 prog/build.pyc
-prog/sync.py
-prog/c.py
 prog/helper.pyc
 prog/scripts/build-it.sh
-prog/helper.py
-prog/cmcompiler.py
 prog/cmcompiler.pyc
 prog/sync.pyc
 images/theme/cmc-yellow.png
