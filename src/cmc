@@ -1,3 +1,13 @@
 #!/bin/bash
 # Wrapper for cmc
-/usr/share/cmc/prog/cmcompiler.py
+
+call=$1
+DIR="/usr/share/cmc/prog"
+
+if [ "$call" == "--compile" ]; then
+	python $DIR/build.pyc
+elif [ "$call" == "--sync" ]; then
+	python $DIR/sync.pyc
+else
+	python $DIR/cmcompiler.pyc
+fi

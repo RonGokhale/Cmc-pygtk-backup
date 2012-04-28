@@ -1,5 +1,5 @@
 cmc usr/bin/
-prog/cmcompiler.py usr/share/cmc/prog/
+prog/*.pyc usr/share/cmc/prog/
 prog/scripts/build-it.sh usr/share/cmc/prog/scripts/
 images/* usr/share/cmc/images/
 desktop/* usr/share/applications/

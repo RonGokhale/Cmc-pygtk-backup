@@ -13,15 +13,10 @@ Categories=GTK;Development;
 X-Ayatana-Desktop-Shortcuts=Compile;Sync;Setup
 [Compile Shortcut Group]
 Name=Compile
-Exec=nautilus
+Exec=/usr/bin/cmc --compile
 TargetEnvironment=Unity
 
 [Sync Shortcut Group]
 Name=Sync
-Exec=nautilus
-TargetEnvironment=Unity
-
-[Setup Shortcut Group]
-Name=Setup
-Exec=nautilus
+Exec=/usr/bin/cmc --sync
 TargetEnvironment=Unity
