@@ -49,6 +49,10 @@ class UpdateLabel(threading.Thread):
 			c = "%s/NoAdbRunning" % (configdir)
 			d = "%s/ExtractFiles" % (configdir)
 			e = "%s/build.failed" % (configdir)
+			f = "%s/NeedRepoScript" % (configdir)
+			g = "%s/NoDeviceC" % (configdir)
+			h= "%s/GenError" % (configdir)
+
 			if os.path.exists(a):
 				ind.set_icon(cmcIntE)
 				menu_items.set_label("Error: Need to sync first!")
@@ -65,6 +69,15 @@ class UpdateLabel(threading.Thread):
 			elif os.path.exists(e):
 				ind.set_icon(cmcIntE)
 				menu_items.set_label("Error: Compile error please check")
+			elif os.path.exists(f):
+				ind.set_icon(cmcIntE)
+				menu_items.set_label("Repo Script needs setup")
+			elif os.path.exists(g):
+				ind.set_icon(cmcIntE)
+				menu_items.set_label("No device configured!")
+			elif os.path.exists(h):
+				ind.set_icon(cmcIntE)
+				menu_items.set_label("General sync error. Run in terminal")
 			else:
 				menu_items.set_label("Complete!")
 				sendNoti("Compiling Complete", "Your cyanogenmod build has finished", cmcIcon)
@@ -106,7 +119,8 @@ def openFolder(obj):
 def repo_build_go():
 	def build_gb():
 		e = "%s/NoAdbRunning" % (configdir)
-		os.remove(e)
+		if os.path.exists(e):
+			os.remove(e)
 		CHECKS = 0
 		build_manu = getManu(build_device)
 		d = "%s/.repo" % (repo_path)
@@ -117,16 +131,17 @@ def repo_build_go():
 
 		if CHECKS == 0:
 			e = "%s/NoDevice" % (configdir)
-			os.remove(e)
+			if os.path.exists(e):
+				os.remove(e)
 			d = "%s/device/%s/%s" % (repo_path, build_manu, build_device)
 			if not os.path.exists(d):
-				print "Meh"
 				e = "%s/NoDevice" % (configdir)
 				file(e, 'w').close()
 
 			if CHECKS == 0:
 				e = "%s/NoAdbRunning" % (configdir)
-				os.remove(e)
+				if os.path.exists(e):
+					os.remove(e)
 				d = "%s/vendor/%s/%s/proprietary" % (repo_path, build_manu, build_device)
 				if not os.path.exists(d):
 					c = checkAdb()
@@ -137,7 +152,8 @@ def repo_build_go():
 
 				if CHECKS == 0:
 					e = "%s/ExtractFiles" % (configdir)
-					os.remove(e)
+					if os.path.exists(e):
+						os.remove(e)
 					c = extractFiles(repo_path, build_manu, build_device)
 					if c == False:
 						CHECKS+=1
@@ -232,6 +248,18 @@ def repo_build_go():
 				build_gb()
 			else:	
 				print "Default"
+
+		elif chk_repo == 0:
+			r = "%s/NeedRepoScript" % (configdir)
+			file(r, 'w').close()
+
+		elif chk_repo == 2:
+				d = "%s/NoDeviceC" % (configdir)
+		file(d, 'w').close()
+
+		else:
+			g = "%s/GenError" % (configdir)
+			file(g, 'w').close()
 
 	start_build()
 

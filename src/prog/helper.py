@@ -153,6 +153,18 @@ def getManu(arg):
 		return None
 
 def common_chk():
+	r = "%s/NeedRepoScript" % (configdir)
+	if os.path.exists(r):
+		os.remove(r)
+
+	d = "%s/NoDeviceC" % (configdir)
+	if os.path.exists(r):
+		os.remove(r)
+
+	g = "%s/GenError" % (configdir)
+	if os.path.exists(r):
+		os.remove(r)
+
 	chk_repo = 0
 	global repo_path
 	global repo_branch
@@ -170,18 +182,11 @@ def common_chk():
 		os.chdir(repo_path)
 		p = which("repo")
 		if p == None:
-			q = question_dialog("Install repo script?", "Repo script isn't installed. Is this something I can do?\nPath:\n<b>/usr/local/sbin/</b>\n\nThis will ask for root!")
-			if q == True:
-				install_repo()
-				chk_repo = 1
-			else:
-				custom_dialog(gtk.MESSAGE_ERROR, "No repo script", "No repo script found in path and no repo script installed. Please install this script, or let me do it. Either way, can't proceed without that script!")
-				chk_repo = 0
+			chk_repo = 0
 		else:
 			chk_repo = 1
 	else:
-		custom_dialog(gtk.MESSAGE_ERROR, "Check device config...", "Sorry, did not find a device configured in:\n<b>%s</b>\n\nPlease go into Setup and select a device." % (config))
-		chk_repo = 0
+		chk_repo = 2
 
 	return chk_repo
 

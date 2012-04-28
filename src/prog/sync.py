@@ -41,8 +41,21 @@ class UpdateLabel(threading.Thread):
 			time.sleep(0.1)
 
 		if st.stopthread.isSet() :
-			menu_items.set_label("Complete!")
-			sendNoti("Syncing Complete", "Your cyanogenmod repo is finished syncing!", cmcIcon)
+			a = "%s/NeedRepoScript" % (configdir)
+			b = "%s/NoDeviceC" % (configdir)
+			c = "%s/GenError" % (configdir)
+			if os.path.exists(a):
+				ind.set_icon(cmcIntE)
+				menu_items.set_label("Repo Script needs setup")
+			elif os.path.exists(b):
+				ind.set_icon(cmcIntE)
+				menu_items.set_label("No device configured!")
+			elif os.path.exists(b):
+				ind.set_icon(cmcIntE)
+				menu_items.set_label("General sync error. Run in terminal")
+			else:
+				menu_items.set_label("Complete!")
+				sendNoti("Syncing Complete", "Your cyanogenmod repo is finished syncing!", cmcIcon)
 			
 	def stop(self):
 		self.stopthread.set()
@@ -82,7 +95,6 @@ def repo_sync_go():
 	repo_branch = read_parser("branch")
 
 	chk_repo = common_chk()
-	print chk_repo
 
 	if chk_repo == 1:
 		cmd1 = "repo init -u %s -b %s" % (cmGit, repo_branch)
@@ -91,6 +103,18 @@ def repo_sync_go():
 		if not os.path.exists(d):
 			os.system(cmd1)
 		os.system(cmd2)
+
+	elif chk_repo == 0:
+		r = "%s/NeedRepoScript" % (configdir)
+		file(r, 'w').close()
+
+	elif chk_repo == 2:
+		d = "%s/NoDeviceC" % (configdir)
+		file(d, 'w').close()
+
+	else:
+		g = "%s/GenError" % (configdir)
+		file(g, 'w').close()
 
 if __name__ == "__main__":
 	sendNoti("Syncing Cyanogenmod", "Your cyanogenmod repo sync is starting", cmcIcon)
