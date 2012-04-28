@@ -15,7 +15,7 @@ all: cmc-10.04-32 cmc-10.04-64 cmc-11.04-32 cmc-11.04-64 cmc-11.10-32 cmc-11.10-
 cmc-10.04-32:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
 	@mkdir -p $(BUILD)/$(VERSION)
-	@python $(SRC_DIR)/prog/c.py
+	@python2.6 $(SRC_DIR)/prog/c.py
 	@cp -r $(SRC_DIR)/* $(BUILD)/$(VERSION)/
 	@cd $(BUILD)/$(VERSION) ; tar czf $(VERSION).tar.gz * ; cd ../../
 	@cd $(BUILD)/$(VERSION) ; yes | dh_make -s -e $(EMAIL) -f $(VERSION).tar.gz ; cd ../../
@@ -34,7 +34,7 @@ cmc-10.04-32:
 cmc-10.04-64:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
 	@mkdir -p $(BUILD)/$(VERSION)
-	@python $(SRC_DIR)/prog/c.py
+	@python2.6 $(SRC_DIR)/prog/c.py
 	@cp -r $(SRC_DIR)/* $(BUILD)/$(VERSION)/
 	@cd $(BUILD)/$(VERSION) ; tar czf $(VERSION).tar.gz * ; cd ../../
 	@cd $(BUILD)/$(VERSION) ; yes | dh_make -s -e $(EMAIL) -f $(VERSION).tar.gz ; cd ../../
