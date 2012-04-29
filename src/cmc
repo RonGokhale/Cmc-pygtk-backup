@@ -8,6 +8,8 @@ if [ "$call" == "--compile" ]; then
 	python $DIR/build.pyc
 elif [ "$call" == "--sync" ]; then
 	python $DIR/sync.pyc
+elif [ "$call" == "--download" ]; then
+	python $DIR/dl_dialog.pyc
 else
 	python $DIR/cmcompiler.pyc
 fi

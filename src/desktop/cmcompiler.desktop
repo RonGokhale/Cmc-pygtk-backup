@@ -10,7 +10,7 @@ Icon=/usr/share/cmc/images/cmc-icon.png
 Type=Application
 Categories=GTK;Development;
 
-X-Ayatana-Desktop-Shortcuts=Compile;Sync;Setup
+X-Ayatana-Desktop-Shortcuts=Compile;Sync;Download
 [Compile Shortcut Group]
 Name=Compile
 Exec=/usr/bin/cmc --compile
@@ -19,4 +19,9 @@ TargetEnvironment=Unity
 [Sync Shortcut Group]
 Name=Sync
 Exec=/usr/bin/cmc --sync
+TargetEnvironment=Unity
+
+[Download Shortcut Group]
+Name=Download
+Exec=/usr/bin/cmc --download
 TargetEnvironment=Unity

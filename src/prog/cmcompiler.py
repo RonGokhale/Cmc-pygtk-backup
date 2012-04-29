@@ -353,6 +353,11 @@ class cmcStartClass():
 		cmd = "/usr/bin/cmc --compile &"
 		os.system(cmd)
 		gtk.main_quit()
+
+	def downloadClicked(self, obj):
+		cmd = "/usr/bin/cmc --download &"
+		os.system(cmd)
+		gtk.main_quit()
  
 	def main_quit(self, obj):
 		gtk.main_quit()
@@ -398,6 +403,11 @@ class cmcStartClass():
 		menu_bar_file.append(menu_setup)
 		menu_setup.connect("activate", self.setup_dialog)
 		menu_setup.show()
+
+		menu_dl = gtk.MenuItem("Download")
+		menu_bar_file.append(menu_dl)
+		menu_dl.connect("activate", self.downloadClicked)
+		menu_dl.show()
 
 		menu_close = gtk.MenuItem("Close")
 		menu_bar_file.append(menu_close)
