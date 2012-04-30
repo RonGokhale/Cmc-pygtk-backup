@@ -11,9 +11,9 @@ If you are having issues with this, you might want to make sure you have these t
 If you are using python 2.7 and need python 2.6 here it is.
 
     wget http://XX.archive.ubuntu.com/ubuntu/pool/main/p/python2.6/{python2.6{,-minimal,-dev,-dbg},libpython2.6}_2.6.7-4ubuntu1_amd64.deb
-    *python2.6*_2.6.7-4ubuntu1_i386.deb
+    *python2.6*_2.6.7-4ubuntu1_amd64.deb
     sudo apt-get install -f
-    *python2.6*_2.6.7-4ubuntu1_i386.deb
+    *python2.6*_2.6.7-4ubuntu1_amd64.deb
 XX being your location, and switching out amd64 for i386 if needed
 Building Cyanogenmod Compiler
 ------------------
