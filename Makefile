@@ -1,6 +1,6 @@
 SHELL := /bin/bash
-VERSION := cmc-0.3
-VER := v0.3
+VERSION := cmc-0.4
+VER := 0.4
 EMAIL := long.jeremie@gmail.com
 VER_DIR := os-versions
 BUILD := build
@@ -28,7 +28,6 @@ cmc-10.04-32:
 	@mkdir -p $(OUT)
 	@mv $(BUILD)/*.deb $(OUT)/$@-$(VER).deb
 	@rm -rf $(BUILD)
-	@rm -rf $(SRC_DIR)/prog/*.pyc
 
 cmc-10.04-64:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
@@ -44,9 +43,8 @@ cmc-10.04-64:
 	@rm $(BUILD)/$(VERSION)/debian/source/format
 	@cd $(BUILD)/$(VERSION) ; debuild --no-tgz-check -d ; cd ../../
 	@mkdir -p $(OUT)
-	@mv $(BUILD)/*.deb $(OUT)/$@-$(VER).deb
+	@mv $(BUILD)/*.deb $(OUT)/$@-v$(VER).deb
 	@rm -rf $(BUILD)
-	@rm -rf $(SRC_DIR)/prog/*.pyc
 
 cmc-11.04-32:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
@@ -62,9 +60,8 @@ cmc-11.04-32:
 	@rm $(BUILD)/$(VERSION)/debian/source/format
 	@cd $(BUILD)/$(VERSION) ; debuild --no-tgz-check -d -ai386 ; cd ../../
 	@mkdir -p $(OUT)
-	@mv $(BUILD)/*.deb $(OUT)/$@-$(VER).deb
+	@mv $(BUILD)/*.deb $(OUT)/$@-v$(VER).deb
 	@rm -rf $(BUILD)
-	@rm -rf $(SRC_DIR)/prog/*.pyc
 
 cmc-11.04-64:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
@@ -80,9 +77,8 @@ cmc-11.04-64:
 	@rm $(BUILD)/$(VERSION)/debian/source/format
 	@cd $(BUILD)/$(VERSION) ; debuild --no-tgz-check -d ; cd ../../
 	@mkdir -p $(OUT)
-	@mv $(BUILD)/*.deb $(OUT)/$@-$(VER).deb
+	@mv $(BUILD)/*.deb $(OUT)/$@-v$(VER).deb
 	@rm -rf $(BUILD)
-	@rm -rf $(SRC_DIR)/prog/*.pyc
 
 cmc-11.10-32:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
@@ -98,9 +94,8 @@ cmc-11.10-32:
 	@rm $(BUILD)/$(VERSION)/debian/source/format
 	@cd $(BUILD)/$(VERSION) ; debuild --no-tgz-check -d -ai386 ; cd ../../
 	@mkdir -p $(OUT)
-	@mv $(BUILD)/*.deb $(OUT)/$@-$(VER).deb
+	@mv $(BUILD)/*.deb $(OUT)/$@-v$(VER).deb
 	@rm -rf $(BUILD)
-	@rm -rf $(SRC_DIR)/prog/*.pyc
 
 cmc-11.10-64:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
@@ -116,9 +111,8 @@ cmc-11.10-64:
 	@rm $(BUILD)/$(VERSION)/debian/source/format
 	@cd $(BUILD)/$(VERSION) ; debuild --no-tgz-check -d ; cd ../../
 	@mkdir -p $(OUT)
-	@mv $(BUILD)/*.deb $(OUT)/$@-$(VER).deb
+	@mv $(BUILD)/*.deb $(OUT)/$@-v$(VER).deb
 	@rm -rf $(BUILD)
-	@rm -rf $(SRC_DIR)/prog/*.pyc
 
 cmc-12.04-32:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
@@ -134,9 +128,8 @@ cmc-12.04-32:
 	@rm $(BUILD)/$(VERSION)/debian/source/format
 	@cd $(BUILD)/$(VERSION) ; debuild --no-tgz-check -d -ai386 ; cd ../../
 	@mkdir -p $(OUT)
-	@mv $(BUILD)/*.deb $(OUT)/$@-$(VER).deb
+	@mv $(BUILD)/*.deb $(OUT)/$@-v$(VER).deb
 	@rm -rf $(BUILD)
-	@rm -rf $(SRC_DIR)/prog/*.pyc
 
 cmc-12.04-64:
 	$(shell for x in $(REQUIRED_DIRS); do if [ ! -d $$x ]; then mkdir -p $$x; fi; done)
@@ -152,9 +145,8 @@ cmc-12.04-64:
 	@rm $(BUILD)/$(VERSION)/debian/source/format
 	@cd $(BUILD)/$(VERSION) ; debuild --no-tgz-check -d ; cd ../../
 	@mkdir -p $(OUT)
-	@mv $(BUILD)/*.deb $(OUT)/$@-$(VER).deb
+	@mv $(BUILD)/*.deb $(OUT)/$@-v$(VER).deb
 	@rm -rf $(BUILD)
-	@rm -rf $(SRC_DIR)/prog/*.pyc
 
 clean:
 	@rm -rf $(OUT)

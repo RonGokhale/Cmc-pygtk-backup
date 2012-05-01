@@ -1,15 +1,9 @@
-cmc (0.1) unstable; urgency=low
+cmc (0.4) unstable; urgency=low
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * Compile and sync bugfixes
+  * Added download for nightly, RC and stable roms
 
- -- lithid <long.jeremie@gmail.com>  Sun, 08 Apr 2012 00:13:27 -0400
-
-cmc (0.2) unstable; urgency=low
-
-  * Fixed issue where paths were not working for compile script
-  * Fixed path issues when using custom repo path
-
- -- lithid <long.jeremie@gmail.com>  Sun, 25 Apr 2012 21:35:27 -0400
+ -- lithid <long.jeremie@gmail.com>  Sat, 01 May 2012 10:02:03 -0400
 
 cmc (0.3) unstable; urgency=low
 
@@ -25,3 +19,16 @@ cmc (0.3) unstable; urgency=low
   * Cmc uses compiled python code now
 
  -- lithid <long.jeremie@gmail.com>  Sat, 28 Apr 2012 08:03:17 -0400
+
+cmc (0.2) unstable; urgency=low
+
+  * Fixed issue where paths were not working for compile script
+  * Fixed path issues when using custom repo path
+
+ -- lithid <long.jeremie@gmail.com>  Sun, 25 Apr 2012 21:35:27 -0400
+
+cmc (0.1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- lithid <long.jeremie@gmail.com>  Sun, 08 Apr 2012 00:13:27 -0400

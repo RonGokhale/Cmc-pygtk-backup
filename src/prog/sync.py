@@ -56,6 +56,8 @@ class UpdateLabel(threading.Thread):
 			else:
 				menu_items.set_label("Complete!")
 				sendNoti("Syncing Complete", "Your cyanogenmod repo is finished syncing!", cmcIcon)
+				menu_items1.set_sensitive(True)
+				menu_items2.set_sensitive(True)
 			
 	def stop(self):
 		self.stopthread.set()
@@ -68,8 +70,6 @@ class SyncThread(threading.Thread):
 		while not self.stopthread.isSet() :
 			gtk.threads_enter()
 			repo_sync_go()
-			menu_items1.set_sensitive(True)
-			menu_items2.set_sensitive(True)
 			ind.set_icon(cmcIntD)
 			gtk.threads_leave()
 			self.stop()
