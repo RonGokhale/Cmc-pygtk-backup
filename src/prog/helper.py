@@ -158,12 +158,12 @@ def common_chk():
 		os.remove(r)
 
 	d = "%s/NoDeviceC" % (configdir)
-	if os.path.exists(r):
-		os.remove(r)
+	if os.path.exists(d):
+		os.remove(d)
 
 	g = "%s/GenError" % (configdir)
-	if os.path.exists(r):
-		os.remove(r)
+	if os.path.exists(g):
+		os.remove(g)
 
 	chk_repo = 0
 	global repo_path
