@@ -5,11 +5,11 @@ call=$1
 DIR="/usr/share/cmc/prog"
 
 if [ "$call" == "--compile" ]; then
-	python $DIR/build.pyc
+	python $DIR/build.py
 elif [ "$call" == "--sync" ]; then
-	python $DIR/sync.pyc
+	python $DIR/sync.py
 elif [ "$call" == "--download" ]; then
-	python $DIR/dl_dialog.pyc
+	python $DIR/dl_dialog.py
 else
-	python $DIR/cmcompiler.pyc
+	python $DIR/cmcompiler.py
 fi

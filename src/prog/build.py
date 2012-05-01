@@ -254,8 +254,8 @@ def repo_build_go():
 			file(r, 'w').close()
 
 		elif chk_repo == 2:
-				d = "%s/NoDeviceC" % (configdir)
-		file(d, 'w').close()
+			d = "%s/NoDeviceC" % (configdir)
+			file(d, 'w').close()
 
 		else:
 			g = "%s/GenError" % (configdir)
